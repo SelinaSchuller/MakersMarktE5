@@ -9,7 +9,30 @@
     mc:Ignorable="d"
     Title="MakersMarktE5">
 
-    <StackPanel Orientation="Horizontal" HorizontalAlignment="Center" VerticalAlignment="Center">
-        <Button x:Name="myButton" Click="myButton_Click">Click Me</Button>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+
+        </StackPanel>
+
+        <StackPanel Grid.ColumnSpan="3" Grid.RowSpan="3" Background="DarkViolet">
+            <TextBlock Text="MakersMarkt" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
+            <TextBlock Text="Pizda" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
+
+            <Image Source="/Assets/Fiat_Maluch_Town.jpg" Width="700"/>
+        </StackPanel>
+
+        <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+    </Grid>
 </Window>
