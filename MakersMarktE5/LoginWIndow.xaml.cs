@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading.Tasks;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 
@@ -73,9 +74,82 @@ namespace MakersMarktE5
             }
         }
 
-        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        private async void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
+            if (sender is Button button)
+            {
+                ContentDialog registerDialog = new ContentDialog
+                {
+                    Title = "Register",
+                    PrimaryButtonText = "Register",
+                    CloseButtonText = "Cancel",
+                    DefaultButton = ContentDialogButton.Primary,
+                    XamlRoot = button.XamlRoot
+                };
 
+                StackPanel panel = new StackPanel();
+                TextBox usernameTextBox = new TextBox { Header = "Username:", Margin = new Thickness(0, 5, 0, 10) };
+                PasswordBox passwordBox = new PasswordBox { Header = "Password:", Margin = new Thickness(0, 10, 0, 10) };
+                PasswordBox passwordCheckBox = new PasswordBox { Header = "Password again:", Margin = new Thickness(0, 10, 0, 5) };
+
+                panel.Children.Add(usernameTextBox);
+                panel.Children.Add(passwordBox);
+                panel.Children.Add(passwordCheckBox);
+                registerDialog.Content = panel;
+
+                var result = await registerDialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    string username = usernameTextBox.Text.Trim();
+                    string password = passwordBox.Password.Trim();
+                    string passwordCheck = passwordCheckBox.Password.Trim();
+
+                    if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
+                    {
+                        await ShowMessage("Username and password cannot be empty.", button);
+                        return;
+                    }
+
+                    if (password != passwordCheck)
+                    {
+                        await ShowMessage("Passwords are not the same.", button);
+                        return;
+                    }
+
+                    using (var db = new AppDbContext())
+                    {
+                        if (db.Users.Any(u => u.Name == username))
+                        {
+                            await ShowMessage("This username is already taken.", button);
+                            return;
+                        }
+
+                        string hashedPassword = HashPassword(password);
+                        var newUser = new User { Name = username, Password = hashedPassword };
+                        db.Users.Add(newUser);
+                        db.SaveChanges();
+
+                        await ShowMessage("Registration successful!", button);
+                    }
+                }
+            }
         }
+
+
+        private async Task ShowMessage(string message, FrameworkElement element)
+        {
+            ContentDialog messageDialog = new ContentDialog
+            {
+                Title = "Notification",
+                Content = message,
+                CloseButtonText = "OK",
+                XamlRoot = element.XamlRoot
+            };
+
+            await messageDialog.ShowAsync();
+        }
+
+
     }
 }
