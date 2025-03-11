@@ -12,6 +12,9 @@
     <EnableMsixTooling>true</EnableMsixTooling>
     <Nullable>enable</Nullable>
   </PropertyGroup>
+  <ItemGroup>
+    <None Remove="template2.xaml" />
+  </ItemGroup>
 
   <ItemGroup>
     <Content Include="Assets\SplashScreen.scale-200.png" />
@@ -47,10 +50,11 @@
     <PackageReference Include="System.Text.Json" Version="8.0.5" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="ModeratorViews\" />
-    <Folder Include="MakerViews\" />
-    <Folder Include="BuyerViews\" />
+    <Page Update="template2.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
+ 
 
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution

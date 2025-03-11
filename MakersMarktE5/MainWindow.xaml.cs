@@ -35,5 +35,10 @@ namespace MakersMarktE5
 			}
 		}
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Navigate(typeof(template2));
+        }
+
     }
 }

@@ -40,10 +40,11 @@
                 <TextBlock Text="ja lubie PISS" FontFamily="Comic Sans MS" FontSize="50" FontStretch="UltraExpanded"/>
                 <Image Source="/Assets/vjvngfgq71zo.png" Width="400" />
             </StackPanel>
-            
-      
 
-        <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+            <Button Grid.Column="1" Grid.Row="2" Content="Go to template 2" Click="Button_Click"/>
+
+
+            <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
         
     </Grid>
     </StackPanel>
