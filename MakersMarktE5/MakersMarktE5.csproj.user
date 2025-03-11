@@ -14,6 +14,9 @@
     <None Update="Package.appxmanifest">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="testpage1.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="template2.xaml">
       <SubType>Designer</SubType>
     </Page>

@@ -21,23 +21,11 @@ namespace MakersMarktE5
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class template2 : Page
+    public sealed partial class testpage1 : Page
     {
-        public template2()
+        public testpage1()
         {
             this.InitializeComponent();
         }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-            this.MainFrame.Navigate(typeof(testpage1));
-        }
-
-        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            throw new NotImplementedException();
-        }
     }
-
-
 }
