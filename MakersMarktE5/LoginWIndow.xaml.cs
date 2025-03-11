@@ -1,5 +1,6 @@
 using MakersMarktE5.Data;
 using MakersMarktE5.Views.BuyerViews;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -91,12 +92,23 @@ namespace MakersMarktE5
                 StackPanel panel = new StackPanel();
                 TextBox usernameTextBox = new TextBox { Header = "Username:", Margin = new Thickness(0, 5, 0, 10) };
                 PasswordBox passwordBox = new PasswordBox { Header = "Password:", Margin = new Thickness(0, 10, 0, 10) };
-                PasswordBox passwordCheckBox = new PasswordBox { Header = "Password again:", Margin = new Thickness(0, 10, 0, 5) };
+                PasswordBox passwordCheckBox = new PasswordBox { Header = "Password again:", Margin = new Thickness(0, 10, 0, 10) };
+                ComboBox roleComboBox = new ComboBox { Header = "Role:", Margin = new Thickness(0, 10, 0, 10) };
+
+                using (var db = new AppDbContext())
+                {
+                    var roles = db.Roles.Where(role => role.RoleId == 1 || role.RoleId == 2).ToList();
+                    roleComboBox.ItemsSource = roles.Select(role => role.Name).ToList();
+                    roleComboBox.SelectedIndex = -1;
+                }
 
                 panel.Children.Add(usernameTextBox);
                 panel.Children.Add(passwordBox);
                 panel.Children.Add(passwordCheckBox);
+                panel.Children.Add(roleComboBox);
+
                 registerDialog.Content = panel;
+
 
                 var result = await registerDialog.ShowAsync();
 
@@ -109,6 +121,12 @@ namespace MakersMarktE5
                     if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                     {
                         await ShowMessage("Username and password cannot be empty.", button);
+                        return;
+                    }
+
+                    if (roleComboBox.SelectedIndex < 0)
+                    {
+                        await ShowMessage("Role can not be empty.", button);
                         return;
                     }
 
@@ -127,7 +145,7 @@ namespace MakersMarktE5
                         }
 
                         string hashedPassword = HashPassword(password);
-                        var newUser = new User { Name = username, Password = hashedPassword, RoleId = 2};
+                        var newUser = new User { Name = username, Password = hashedPassword, RoleId = roleComboBox.SelectedIndex + 1};
                         db.Users.Add(newUser);
                         db.SaveChanges();
 
