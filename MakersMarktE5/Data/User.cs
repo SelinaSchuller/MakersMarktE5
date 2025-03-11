@@ -22,9 +22,6 @@ namespace MakersMarktE5.Data
         [Required]
         public string Password { get; set; }
 
-        [Required]
-        public string Email { get; set; }
-
         [ForeignKey("Role")]
         public int RoleId { get; set; }
         public Role Role { get; set; }
