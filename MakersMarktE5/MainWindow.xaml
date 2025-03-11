@@ -11,20 +11,20 @@
 
     <StackPanel Background="DarkViolet">
 
-        <Grid>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="*"/>
-            </Grid.RowDefinitions>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-                <ColumnDefinition Width="*"/>
-            </Grid.ColumnDefinitions>
-
-
+        
             <StackPanel Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical">
                 <TextBlock Text="MakersMarkt" FontSize="30" Foreground="White" />
                 <TextBlock Text="Pizda" FontSize="20" Foreground="White" />
@@ -40,8 +40,6 @@
                 <TextBlock Text="ja lubie PISS" FontFamily="Comic Sans MS" FontSize="50" FontStretch="UltraExpanded"/>
                 <Image Source="/Assets/vjvngfgq71zo.png" Width="400" />
             </StackPanel>
-
-            <Button Grid.Column="2" Grid.Row="2" Content="Go to productpage" Click="ProductPageButton_Click"/>
 
             <Button Grid.Column="1" Grid.Row="2" Content="Go to template 2" Click="Button_Click"/>
 
