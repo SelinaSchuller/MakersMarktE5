@@ -25,11 +25,22 @@
             </Grid.ColumnDefinitions>
 
 
-            <StackPanel Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical">
-                <TextBlock Text="MakersMarkt" FontSize="30" Foreground="White" />
-                <TextBlock Text="Pizda" FontSize="20" Foreground="White" />
-                <Image Source="/Assets/Fiat_Maluch_Town.jpg" Width="400"/>
+            <StackPanel Grid.Column="0" Grid.RowSpan="3">
+                <Button Content="show_data" Width="auto" Click="Button_Click_1"/>
+                
             </StackPanel>
+
+            <ListView x:Name="listView" Grid.Column="1" Grid.RowSpan="3" Background="DarkViolet" Foreground="White" SelectionChanged="listView_SelectionChanged">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="test data 1" FontSize="20" Foreground="White"/>
+                                
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+
 
             <StackPanel Grid.Column="1"  Grid.RowSpan="2" Orientation="Vertical">
                 <TextBlock Text="pinqwin" FontFamily="Comic Sans MS" FontSize="50" FontStretch="UltraExpanded"/>
@@ -41,7 +52,7 @@
                 <Image Source="/Assets/vjvngfgq71zo.png" Width="400" />
             </StackPanel>
 
-
+            <Frame x:Name="testFrame" Grid.Column="0" Grid.RowSpan="3"/>
 
             <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
 

@@ -27,5 +27,17 @@ namespace MakersMarktE5
         {
             this.InitializeComponent();
         }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            this.MainFrame.Navigate(typeof(MainWindow));
+        }
+
+        private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
     }
+
+
 }
