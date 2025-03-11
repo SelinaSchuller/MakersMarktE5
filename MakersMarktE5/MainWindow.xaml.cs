@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using MakersMarktE5.Data;
+using Windows.System;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -27,13 +28,6 @@ namespace MakersMarktE5
         public MainWindow()
         {
             this.InitializeComponent();
-
-			using(var db = new AppDbContext())
-			{
-				db.Database.EnsureDeleted();
-				db.Database.EnsureCreated();
-			}
-		}
-
+        }
     }
 }

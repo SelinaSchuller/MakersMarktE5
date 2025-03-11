@@ -1,3 +1,4 @@
+using MakersMarktE5.Data;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -23,9 +24,58 @@ namespace MakersMarktE5
     /// </summary>
     public sealed partial class LoginWIndow : Window
     {
+        private int _userId { get; set; }
+
         public LoginWIndow()
         {
             this.InitializeComponent();
+
+            using (var db = new AppDbContext())
+            {
+                db.Database.EnsureDeleted();
+                db.Database.EnsureCreated();
+            }
+        }
+
+        private string HashPassword(string password)
+        {
+            using (var sha256 = System.Security.Cryptography.SHA256.Create())
+            {
+                var hashedBytes = sha256.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+                return BitConverter.ToString(hashedBytes).Replace("-", "").ToLower();
+            }
+        }
+
+        private void LoginButton_Click(object sender, RoutedEventArgs e)
+        {
+            using (var db = new AppDbContext())
+            {
+                string username = usernameTextBox.Text;
+                string password = passwordTextBox.Password;
+                string hashedPassword = HashPassword(password);
+
+                var user = db.Users.FirstOrDefault(u => u.Name == username && u.Password == hashedPassword);
+
+                if (user != null)
+                {
+                    int userId = user.Id;
+                    _userId = userId;
+                    Data.User.LoggedInUser = user;
+
+                    var mainWindow = new MainWindow(userId);
+                    mainWindow.Activate();
+                    this.Close();
+                }
+                else
+                {
+                    ErrorTextBlock.Text = "E-mail of wachtwoord is onjuist";
+                }
+            }
+        }
+
+        private void RegisterButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
