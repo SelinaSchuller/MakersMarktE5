@@ -14,10 +14,6 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 	<ItemGroup>
-	  <Content Remove="Assets\giraff.jpg" />
-	  <Content Remove="Assets\Logo.png" />
-	</ItemGroup>
-	<ItemGroup>
 		<None Remove="Views\BuyerViews\BuyerWindow.xaml" />
 		<None Remove="Views\BuyerViews\ProductPage.xaml" />
 	</ItemGroup>

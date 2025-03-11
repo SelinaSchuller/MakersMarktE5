@@ -12,6 +12,7 @@ namespace MakersMarktE5.Data
 	class AppDbContext : DbContext
 	{
 		public DbSet<User> Users { get; set; }
+		public DbSet<Product> Products { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
