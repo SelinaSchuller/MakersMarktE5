@@ -9,6 +9,8 @@
     mc:Ignorable="d"
     Title="MakersMarktE5">
 
+    <StackPanel Background="DarkViolet">
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,17 +24,27 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <StackPanel>
+        
+            <StackPanel Grid.Column="0" Grid.RowSpan="3" Orientation="Vertical">
+                <TextBlock Text="MakersMarkt" FontSize="30" Foreground="White" />
+                <TextBlock Text="Pizda" FontSize="20" Foreground="White" />
+                <Image Source="/Assets/Fiat_Maluch_Town.jpg" Width="400"/>
+            </StackPanel>
 
-        </StackPanel>
+            <StackPanel Grid.Column="1"  Grid.RowSpan="2" Orientation="Vertical">
+                <TextBlock Text="pinqwin" FontFamily="Comic Sans MS" FontSize="50" FontStretch="UltraExpanded"/>
+                <Image Source="/Assets/pinqwin.jpg" Width="400"/>
+            </StackPanel>
 
-        <StackPanel Grid.ColumnSpan="3" Grid.RowSpan="3" Background="DarkViolet">
-            <TextBlock Text="MakersMarkt" FontSize="30" Foreground="White" HorizontalAlignment="Center"/>
-            <TextBlock Text="Pizda" FontSize="20" Foreground="White" HorizontalAlignment="Center"/>
-
-            <Image Source="/Assets/Fiat_Maluch_Town.jpg" Width="700"/>
-        </StackPanel>
+            <StackPanel Grid.Column="2" Grid.RowSpan="2" Orientation="Vertical">
+                <TextBlock Text="ja lubie PISS" FontFamily="Comic Sans MS" FontSize="50" FontStretch="UltraExpanded"/>
+                <Image Source="/Assets/vjvngfgq71zo.png" Width="400" />
+            </StackPanel>
+            
+      
 
         <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
+        
     </Grid>
+    </StackPanel>
 </Window>
