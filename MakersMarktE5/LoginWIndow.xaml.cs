@@ -39,16 +39,6 @@ namespace MakersMarktE5
             }
         }
 
-		private void ProductPageButton_Click(object sender, RoutedEventArgs e)
-		{
-			var baseWindow = new BuyerWindow();
-
-			baseWindow.Activate();
-			DispatcherQueue.TryEnqueue(() =>
-			{
-				this.Close();
-			});
-		}
 		private string HashPassword(string password)
         {
             using (var sha256 = System.Security.Cryptography.SHA256.Create())
