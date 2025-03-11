@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
@@ -11,6 +11,8 @@ namespace MakersMarktE5.Data
 {
     public class User
     {
+        public static User LoggedInUser { get; set; }
+
         [Key]
         public int Id { get; set; }
 
@@ -31,3 +33,5 @@ namespace MakersMarktE5.Data
         public ICollection<Review> Reviews { get; set; }
     }
 }
+
+
