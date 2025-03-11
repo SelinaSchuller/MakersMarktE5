@@ -8,12 +8,12 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
+    <Grid Background="#363535">
         <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Spacing="20">
             <TextBox x:Name="usernameTextBox" Header="Username" Width="auto"/>
             <PasswordBox x:Name="passwordTextBox" Header="Password" Width="auto"/>
             <TextBlock x:Name="ErrorTextBlock" Foreground="Red"/>
-            <StackPanel>
+            <StackPanel Orientation="Horizontal" Spacing="50" HorizontalAlignment="Center">
                 <Button x:Name="LoginButton" Click="LoginButton_Click" Content="Login" Width="100"/>
                 <Button x:Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Width="100"/>
             </StackPanel>

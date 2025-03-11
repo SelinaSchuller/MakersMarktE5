@@ -59,10 +59,10 @@ namespace MakersMarktE5
                 if (user != null)
                 {
                     int userId = user.Id;
-                    _userId = userId;
                     Data.User.LoggedInUser = user;
 
-                    var mainWindow = new MainWindow(userId);
+                    //verander dit naar de juiste locatie
+                    var mainWindow = new MainWindow();
                     mainWindow.Activate();
                     this.Close();
                 }
