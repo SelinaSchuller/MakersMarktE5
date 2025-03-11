@@ -46,9 +46,9 @@ namespace MakersMarktE5.Data
 
             // Seeding Users
             modelBuilder.Entity<User>().HasData(
-                new User { Id = 1, Name = "Jan", Password = "hashed123", Email = "jan@example.com", RoleId = 1 },
-                new User { Id = 2, Name = "Lisa", Password = "hashed456", Email = "lisa@example.com", RoleId = 2 },
-                new User { Id = 3, Name = "Mark", Password = "hashed789", Email = "mark@example.com", RoleId = 3 }
+                new User { Id = 1, Name = "Jan", Password = HashPassword("wachtwoord"), RoleId = 1 },
+                new User { Id = 2, Name = "Lisa", Password = HashPassword("wachtwoord"), RoleId = 2 },
+                new User { Id = 3, Name = "Mark", Password = HashPassword("wachtwoord"), RoleId = 3 }
             );
 
             // Seeding Categories
