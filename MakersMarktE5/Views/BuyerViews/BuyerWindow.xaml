@@ -24,7 +24,7 @@
 
         <Grid Grid.Column="1">
             <Grid Margin="10,70,10,10" Background="#ece9dd">
-                <TextBlock Text="Hier komt de inhoud..." FontSize="14" Foreground="Gray" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                <Frame x:Name="MainFrame" />
             </Grid>
         </Grid>
     </Grid>

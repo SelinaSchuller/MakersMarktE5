@@ -31,6 +31,8 @@ namespace MakersMarktE5.Views.BuyerViews
 			this.Title = "Buyers Dashboard";
 			Fullscreen fullscreenService = new Fullscreen();
 			fullscreenService.SetFullscreen(this);
+
+			MainFrame.Navigate(typeof(ProductPage));
 		}
-    }
+	}
 }

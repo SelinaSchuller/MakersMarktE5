@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
     <OutputType>WinExe</OutputType>
     <TargetFramework>net8.0-windows10.0.19041.0</TargetFramework>
@@ -15,6 +15,7 @@
   <ItemGroup>
     <None Remove="BuyerViews\BuyerWindow.xaml" />
     <None Remove="Views\BuyerViews\BuyerWindow.xaml" />
+    <None Remove="Views\BuyerViews\ProductPage.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -53,6 +54,11 @@
   <ItemGroup>
     <Folder Include="Views\ModeratorViews\" />
     <Folder Include="Views\MakerViews\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Update="Views\BuyerViews\ProductPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Views\BuyerViews\BuyerWindow.xaml">
