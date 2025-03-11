@@ -70,7 +70,7 @@ namespace MakersMarktE5
                 }
                 else
                 {
-                    ErrorTextBlock.Text = "E-mail of wachtwoord is onjuist";
+                    ErrorTextBlock.Text = "E-mail or password is incorrect.";
                 }
             }
         }
@@ -127,7 +127,7 @@ namespace MakersMarktE5
                         }
 
                         string hashedPassword = HashPassword(password);
-                        var newUser = new User { Name = username, Password = hashedPassword };
+                        var newUser = new User { Name = username, Password = hashedPassword, RoleId = 2};
                         db.Users.Add(newUser);
                         db.SaveChanges();
 
