@@ -43,9 +43,11 @@
 
             <Button Grid.Column="2" Grid.Row="2" Content="Go to productpage" Click="ProductPageButton_Click"/>
 
+            <Button Grid.Column="1" Grid.Row="2" Content="Go to template 2" Click="Button_Click"/>
+
 
             <Frame x:Name="MainFrame" Grid.ColumnSpan="3" Grid.RowSpan="3"/>
-
-        </Grid>
+        
+    </Grid>
     </StackPanel>
 </Window>

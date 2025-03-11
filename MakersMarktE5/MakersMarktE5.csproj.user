@@ -15,6 +15,7 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\BuyerViews\BuyerWindow.xaml">
+    <Page Update="template2.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>

@@ -16,6 +16,7 @@
     <None Remove="BuyerViews\BuyerWindow.xaml" />
     <None Remove="Views\BuyerViews\BuyerWindow.xaml" />
     <None Remove="Views\BuyerViews\ProductPage.xaml" />
+    <None Remove="template2.xaml" />
   </ItemGroup>
 
   <ItemGroup>
@@ -67,9 +68,11 @@
   </ItemGroup>
   <ItemGroup>
     <Page Update="BuyerViews\BuyerWindow.xaml">
+    <Page Update="template2.xaml">
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
+ 
 
   <!--
     Defining the "HasPackageAndPublishMenuAddedByProject" property here allows the Solution
