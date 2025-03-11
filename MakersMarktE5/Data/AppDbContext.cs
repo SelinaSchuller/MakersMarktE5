@@ -10,6 +10,7 @@ namespace MakersMarktE5.Data
 {
 	class AppDbContext : DbContext
 	{
+		public DbSet<User> Users { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -21,6 +22,9 @@ namespace MakersMarktE5.Data
 
 		protected override void OnModelCreating(ModelBuilder modelBuilder)
 		{
+			modelBuilder.Entity<User>().HasData(
+				new User { Id = 1, Name = "admin", Password = "wachtwoord"}
+			);
 		}
 	}
 }
