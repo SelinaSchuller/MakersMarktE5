@@ -30,7 +30,7 @@ namespace MakersMarktE5
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            this.MainFrame.Navigate(typeof(testpage1));
+            this.testFrame.Navigate(typeof(testpage1));
         }
 
         private void listView_SelectionChanged(object sender, SelectionChangedEventArgs e)
