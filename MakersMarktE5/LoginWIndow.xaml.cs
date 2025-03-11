@@ -1,4 +1,5 @@
 using MakersMarktE5.Data;
+using MakersMarktE5.Views.BuyerViews;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.UI.Xaml.Controls.Primitives;
@@ -38,7 +39,7 @@ namespace MakersMarktE5
             }
         }
 
-        private string HashPassword(string password)
+		private string HashPassword(string password)
         {
             using (var sha256 = System.Security.Cryptography.SHA256.Create())
             {
@@ -69,7 +70,7 @@ namespace MakersMarktE5
                 }
                 else
                 {
-                    ErrorTextBlock.Text = "E-mail of wachtwoord is onjuist";
+                    ErrorTextBlock.Text = "E-mail or password is incorrect.";
                 }
             }
         }
@@ -126,7 +127,7 @@ namespace MakersMarktE5
                         }
 
                         string hashedPassword = HashPassword(password);
-                        var newUser = new User { Name = username, Password = hashedPassword };
+                        var newUser = new User { Name = username, Password = hashedPassword, RoleId = 2};
                         db.Users.Add(newUser);
                         db.SaveChanges();
 

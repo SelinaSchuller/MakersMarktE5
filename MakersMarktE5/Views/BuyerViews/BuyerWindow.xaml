@@ -18,8 +18,8 @@
         <StackPanel Grid.Column="0" Background="#5e341a" Width="250" HorizontalAlignment="Center">
             <Image Width="150" Height="Auto" Source="/Assets/Logo.png" Margin="5"/>
             <Button Content="Home" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
-            <Button Content="Mijn Bestellingen" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
-            <Button Content="Instellingen" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <Button Content="My Orders" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <Button Content="Settings" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
         </StackPanel>
 
         <Grid Grid.Column="1">
