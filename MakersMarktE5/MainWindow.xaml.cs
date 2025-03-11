@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using MakersMarktE5.Data;
 using MakersMarktE5.Views.BuyerViews;
+using Windows.System;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -28,14 +29,8 @@ namespace MakersMarktE5
         public MainWindow()
         {
             this.InitializeComponent();
-
-			using(var db = new AppDbContext())
-			{
-				db.Database.EnsureDeleted();
-				db.Database.EnsureCreated();
-			}
-		}
-
+        }
+        
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             this.MainFrame.Navigate(typeof(template2));
