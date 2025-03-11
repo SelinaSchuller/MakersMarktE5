@@ -20,21 +20,21 @@ namespace MakersMarktE5.Data
 				ServerVersion.Parse("8.0.30")
 				);
 		}
-        
+
         private static string HashPassword(string password)
         {
-            {
             using (SHA256 sha256 = SHA256.Create())
+            {
                 byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
                 StringBuilder builder = new StringBuilder();
                 foreach (byte b in bytes)
                 {
                     builder.Append(b.ToString("x2"));
-                return builder.ToString();
                 }
+                return builder.ToString();
             }
         }
-        
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             // Seeding Roles
