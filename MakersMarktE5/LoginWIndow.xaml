@@ -16,6 +16,8 @@
             <StackPanel Orientation="Horizontal" Spacing="50" HorizontalAlignment="Center">
                 <Button x:Name="LoginButton" Click="LoginButton_Click" Content="Login" Width="125"/>
                 <Button x:Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Width="125"/>
+                <Button Content="Go to productpage" Click="ProductPageButton_Click"/>
+
             </StackPanel>
         </StackPanel>
     </Grid>
