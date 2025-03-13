@@ -17,11 +17,10 @@ namespace MakersMarktE5.Views.BuyerViews
 
 		private void LoadProducts()
 		{
-			using(var db = new AppDbContext())  // Connect to the database
+			using(var db = new AppDbContext())
 			{
-				var productList = db.Products.ToList(); // Retrieve products
+				var productList = db.Products.ToList();
 
-				// Update the ObservableCollection
 				Products.Clear();
 				foreach(var product in productList)
 				{
@@ -29,7 +28,6 @@ namespace MakersMarktE5.Views.BuyerViews
 				}
 			}
 
-			// Bind the list to the UI
 			ProductListView.ItemsSource = Products;
 		}
 	}
