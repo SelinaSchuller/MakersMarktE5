@@ -12,6 +12,8 @@ using Microsoft.UI.Xaml.Data;
 using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
+using MakersMarktE5.Data;
+using Microsoft.EntityFrameworkCore;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -26,6 +28,15 @@ namespace MakersMarktE5.Views.ModeratorViews
         public ProductEditPage()
         {
             this.InitializeComponent();
-        }
+
+			using(var db = new AppDbContext())
+			{
+				var products = db.Products
+					.Include(p => p.Categories)
+					.Include(p => p.Materials)
+					.ToList();
+				ProductListView.ItemsSource = products;
+			}
+		}
     }
 }
