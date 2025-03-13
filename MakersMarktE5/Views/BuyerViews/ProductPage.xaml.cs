@@ -15,8 +15,8 @@ namespace MakersMarktE5.Views.BuyerViews
             using (var db = new AppDbContext())
             {
                 var products = db.Products
-					.Include(p => p.Categories)
-					.Include(p => p.Materials)
+                    .Include(p => p.Categories)
+                    .Include(p => p.Materials)
 					.ToList();
                 ProductListView.ItemsSource = products;
             }
@@ -27,7 +27,7 @@ namespace MakersMarktE5.Views.BuyerViews
             using (var db = new AppDbContext())
             {
                 var products = db.Products
-                                 .Where(p => p.Name.Contains(searchTerm))
+                                 .Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm))
                                  .ToList();
                 ProductListView.ItemsSource = products;
             }
