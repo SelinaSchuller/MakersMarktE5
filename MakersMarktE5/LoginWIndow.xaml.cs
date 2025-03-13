@@ -1,4 +1,5 @@
 using MakersMarktE5.Data;
+using MakersMarktE5.Services;
 using MakersMarktE5.Views.BuyerViews;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
@@ -33,7 +34,11 @@ namespace MakersMarktE5
         {
             this.InitializeComponent();
 
-            using (var db = new AppDbContext())
+			this.Title = "Login Window";
+			Fullscreen fullscreenService = new Fullscreen();
+			fullscreenService.SetFullscreen(this);
+
+			using (var db = new AppDbContext())
             {
                 db.Database.EnsureDeleted();
                 db.Database.EnsureCreated();
@@ -65,9 +70,19 @@ namespace MakersMarktE5
                     Data.User.LoggedInUser = user;
 
                     //verander dit naar de juiste locatie
-                    var mainWindow = new MainWindow();
-                    mainWindow.Activate();
-                    this.Close();
+                    if(user.RoleId == 2)
+                    {
+                        //Role Buyer:
+						var buyerWindow = new BuyerWindow();
+						buyerWindow.Activate();
+						this.Close();
+					}
+                    else
+                    {
+						var mainWindow = new MainWindow();
+						mainWindow.Activate();
+						this.Close();
+					}
                 }
                 else
                 {
