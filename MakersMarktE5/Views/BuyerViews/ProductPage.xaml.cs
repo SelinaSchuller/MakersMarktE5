@@ -12,8 +12,7 @@ namespace MakersMarktE5.Views.BuyerViews
 		public ProductPage()
 		{
 			this.InitializeComponent();
-			LoadProducts();
-		}
+		
 
             //Products = new ObservableCollection<Product>
             //{
