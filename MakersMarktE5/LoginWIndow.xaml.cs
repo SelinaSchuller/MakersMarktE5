@@ -25,11 +25,11 @@ namespace MakersMarktE5
     /// <summary>
     /// An empty window that can be used on its own or navigated to within a Frame.
     /// </summary>
-    public sealed partial class LoginWIndow : Window
+    public sealed partial class LoginWindow : Window
     {
         private int _userId { get; set; }
 
-        public LoginWIndow()
+        public LoginWindow()
         {
             this.InitializeComponent();
 

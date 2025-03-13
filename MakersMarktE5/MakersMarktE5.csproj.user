@@ -5,7 +5,7 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
-    <Page Update="LoginWIndow.xaml">
+    <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
     <None Update="MainWindow.xaml">
@@ -18,8 +18,8 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Views\BuyerViews\BuyerWindow.xaml">
-		<SubType>Designer</SubType>
-	</Page>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="testpage1.xaml">
       <SubType>Designer</SubType>
     </Page>
