@@ -1,6 +1,7 @@
 using MakersMarktE5.Data;
 using MakersMarktE5.Services;
 using MakersMarktE5.Views.BuyerViews;
+using MakersMarktE5.Views.ModeratorViews;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
 using Microsoft.UI.Xaml.Controls;
@@ -77,7 +78,14 @@ namespace MakersMarktE5
 						buyerWindow.Activate();
 						this.Close();
 					}
-                    else
+					else if(user.RoleId == 3)
+					{
+						//Role Moderator:
+						var moderatorWindow = new ModeratorWindow();
+						moderatorWindow.Activate();
+						this.Close();
+					}
+					else
                     {
 						var mainWindow = new MainWindow();
 						mainWindow.Activate();

@@ -14,6 +14,8 @@ namespace MakersMarktE5.Data
 		public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<Product> Products { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Material> Materials { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
@@ -111,7 +113,8 @@ namespace MakersMarktE5.Data
             // Seeding Products
             modelBuilder.Entity<Product>().HasData(
                 new Product { Id = 1, Name = "Wooden Table", Description = "Sturdy oak table", TypeId = 1, ProductionTime = "5 days", Complexity = "Medium", Sustainability = "High", PropertyId = 1, CreatorId = 2},
-                new Product { Id = 2, Name = "Steel Hammer", Description = "Durable hammer", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 2}
+                new Product { Id = 2, Name = "Steel Hammer", Description = "Durable hammer", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 2},
+                new Product { Id = 3, Name = "Necklace", Description = "Beautiful necklace with diamond.", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 2}
             );
 
 			// Seed ProductCategory Relationships (Assigning Products to Categories)

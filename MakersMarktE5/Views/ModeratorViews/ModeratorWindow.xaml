@@ -9,7 +9,26 @@
     mc:Ignorable="d"
     Title="ModeratorWindow">
 
-    <Grid>
+    <Grid Background="#e4e0cf">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
 
+        <StackPanel Grid.Column="0" Background="#5e341a" Width="250" HorizontalAlignment="Center">
+            <Image Width="150" Height="Auto" Source="/Assets/Logo.png" Margin="5"/>
+            <TextBlock Text="Moderator Dashboard" Foreground="White" FontSize="20" Padding="10" TextWrapping="WrapWholeWords"/>
+            <Button Content="Home" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <Button Content="My Orders" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <Button Content="Settings" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <TextBox PlaceholderText="Search for name" x:Name="SearchBar"/>
+            <Button Content="Search" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" Click="Search_Button_Click"/>
+        </StackPanel>
+
+        <Grid Grid.Column="1">
+            <Grid Margin="10,70,10,10" Background="#ece9dd">
+                <Frame x:Name="MainFrame" />
+            </Grid>
+        </Grid>
     </Grid>
 </Window>

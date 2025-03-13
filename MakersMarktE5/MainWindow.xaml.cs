@@ -46,6 +46,5 @@ namespace MakersMarktE5
 				this.Close();
 			});
 		}
-
 	}
 }

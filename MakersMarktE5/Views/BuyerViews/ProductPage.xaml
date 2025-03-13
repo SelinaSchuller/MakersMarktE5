@@ -19,7 +19,7 @@
                             <TextBlock Text="{Binding Description}" Foreground="#5e341a" FontSize="14" TextWrapping="Wrap" TextAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" Text="Production: " Foreground="#5e341a" FontSize="12"/>
-                                <TextBlock Text="{Binding ProductionTime}" Foreground="#5e341a" FontSize="12" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding ProductionTime}" Foreground="#5e341a" FontSize="12" TextWrapping="WrapWholeWords"/>
                             </StackPanel>
                             <StackPanel Margin="5,5,5,0">
                                 <TextBlock FontWeight="Bold" Text="Materials:" Foreground="#5e341a" FontSize="12" TextAlignment="Center"/>
@@ -28,7 +28,7 @@
                                         <DataTemplate>
                                             <StackPanel Spacing="2" Orientation="Horizontal" HorizontalAlignment="Center">
                                                 <TextBlock FontWeight="Bold" Text="- " Foreground="#5e341a" FontSize="12"/>
-                                                <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="12" TextWrapping="Wrap"/>
+                                                <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="12" TextWrapping="WrapWholeWords"/>
                                             </StackPanel>
                                         </DataTemplate>
                                     </ItemsControl.ItemTemplate>
