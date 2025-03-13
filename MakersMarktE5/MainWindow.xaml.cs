@@ -47,5 +47,16 @@ namespace MakersMarktE5
 			});
 		}
 
+		private void Search_Button_Click(object sender, RoutedEventArgs e)
+		{
+			string searchTerm = SearchBar.Text.Trim();
+
+			// Assuming 'MainFrame' is displaying 'ProductPage'
+			if(MainFrame.Content is ProductPage productPage)
+			{
+				productPage.Productfilter(searchTerm);
+			}
+		}
+
 	}
 }
