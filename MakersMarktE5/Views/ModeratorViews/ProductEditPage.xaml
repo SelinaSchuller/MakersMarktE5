@@ -10,7 +10,7 @@
 
     <Grid Padding="20" HorizontalAlignment="Center">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="2*" />
+            <ColumnDefinition Width="3*" />
             <ColumnDefinition Width="1*" />
         </Grid.ColumnDefinitions>
 
@@ -108,7 +108,7 @@
         </GridView>
 
         <StackPanel Grid.Column="1" Padding="10">
-            <TextBlock Text="Select Categories" FontSize="16" FontWeight="Bold" Foreground="#5e341a"/>
+            <TextBlock Text="Select a product from the list and then select which categories you want to add to it." FontSize="16" FontWeight="Bold" Foreground="#5e341a" TextWrapping="WrapWholeWords"/>
             <ListView x:Name="CategoryListView" SelectionMode="Multiple" Height="Auto" Background="#834f2f" BorderBrush="Transparent" BorderThickness="1" CornerRadius="5" Margin="0 10" DisplayMemberPath="Name"/>
             <Button Content="Assign Categories" Click="AssignCategories_Click" Background="#5e341a" Foreground="White" Padding="10" Margin="10,0,0,0"/>
         </StackPanel>
