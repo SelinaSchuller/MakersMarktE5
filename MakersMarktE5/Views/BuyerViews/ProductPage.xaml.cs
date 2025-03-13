@@ -13,10 +13,44 @@ namespace MakersMarktE5.Views.BuyerViews
 		public ProductPage()
 		{
 			this.InitializeComponent();
-			LoadProducts();
-		}
+		
 
-		private void LoadProducts()
+
+            //Products = new ObservableCollection<Product>
+            //{
+            //	new Product { Name = "Handmade Necklace", Description = "A beautiful necklace made of silver and gemstones." },
+            //	new Product { Name = "Colorful Vase Art", Description = "Hand-painted ceramic vase with unique patterns." },
+            //	new Product { Name = "Handwoven Scarf", Description = "A warm scarf, lovingly woven from 100% wool." },
+            //	new Product { Name = "Handmade Necklace", Description = "A beautiful necklace made of silver and gemstones." },
+            //	new Product { Name = "Colorful Vase Art", Description = "Hand-painted ceramic vase with unique patterns." },
+            //	new Product { Name = "Handwoven Scarf", Description = "A warm scarf, lovingly woven from 100% wool." },
+            //	new Product { Name = "Handmade Necklace", Description = "A beautiful necklace made of silver and gemstones." },
+            //	new Product { Name = "Colorful Vase Art", Description = "Hand-painted ceramic vase with unique patterns." },
+            //	new Product { Name = "Handwoven Scarf", Description = "A warm scarf, lovingly woven from 100% wool." }
+            //};
+
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products.ToList();
+                ProductListView.ItemsSource = products;
+
+            }
+
+            //ProductListView.ItemsSource = Products;
+        }
+
+        public void Productfilter(string searchTerm = "")
+        {
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products
+                                 .Where(p => p.Name.Contains(searchTerm))
+                                 .ToList();
+                ProductListView.ItemsSource = products;
+            }
+        }
+        
+        private void LoadProducts()
 		{
 			using(var db = new AppDbContext())
 			{
@@ -34,5 +68,6 @@ namespace MakersMarktE5.Views.BuyerViews
 
 			ProductListView.ItemsSource = Products;
 		}
-	}
+
+    }
 }

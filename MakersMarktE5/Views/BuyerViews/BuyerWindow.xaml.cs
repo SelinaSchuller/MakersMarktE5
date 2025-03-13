@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using MakersMarktE5.Services;
+using MakersMarktE5.Data;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -35,5 +36,18 @@ namespace MakersMarktE5.Views.BuyerViews
 			MainFrame.Navigate(typeof(ProductPage));
 
 		}
-	}
+
+        private void Search_Button_Click(object sender, RoutedEventArgs e)
+        {
+            string searchTerm = SearchBar.Text.Trim();
+
+            // Assuming 'MainFrame' is displaying 'ProductPage'
+            if (MainFrame.Content is ProductPage productPage)
+            {
+                productPage.Productfilter(searchTerm);
+            }
+        }
+
+
+    }
 }

@@ -20,6 +20,8 @@
             <Button Content="Home" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
             <Button Content="My Orders" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
             <Button Content="Settings" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <TextBox PlaceholderText="Search for name" x:Name="SearchBar"/>
+            <Button Content="Search" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" Click="Search_Button_Click"/>
         </StackPanel>
 
         <Grid Grid.Column="1">
