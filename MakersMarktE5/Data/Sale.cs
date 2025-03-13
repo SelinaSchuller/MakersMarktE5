@@ -10,8 +10,15 @@ namespace MakersMarktE5.Data
 {
     public class Sale
     {
+        public enum StatusType
+		{
+            Ordered = 1,
+            InProgress = 2,
+            Send = 3
+        }
+            
         [Key]
-        public int SaleId { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("User")]
         public int UserId { get; set; }
@@ -22,6 +29,7 @@ namespace MakersMarktE5.Data
         public Product Product { get; set; }
 
         public int Amount { get; set; }
-        public string Description { get; set; }
+        public string? Description { get; set; }
+        public StatusType Status { get; set; }
     }
 }

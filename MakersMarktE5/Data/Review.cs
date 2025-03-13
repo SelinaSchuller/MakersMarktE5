@@ -11,7 +11,7 @@ namespace MakersMarktE5.Data
     public class Review
     {
         [Key]
-        public int ReviewId { get; set; }
+        public int Id { get; set; }
 
         [ForeignKey("User")]
         public int UserId { get; set; }

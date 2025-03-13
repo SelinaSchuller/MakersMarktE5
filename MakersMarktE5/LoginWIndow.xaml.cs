@@ -112,7 +112,7 @@ namespace MakersMarktE5
 
                 using (var db = new AppDbContext())
                 {
-                    var roles = db.Roles.Where(role => role.RoleId == 1 || role.RoleId == 2).ToList();
+                    var roles = db.Roles.Where(role => role.Id == 1 || role.Id == 2).ToList();
                     roleComboBox.ItemsSource = roles.Select(role => role.Name).ToList();
                     roleComboBox.SelectedIndex = -1;
                 }

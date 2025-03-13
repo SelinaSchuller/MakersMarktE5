@@ -22,11 +22,10 @@ namespace MakersMarktE5.Data
         public int TypeId { get; set; }
         public Type Type { get; set; }
 
-        [ForeignKey("Category")]
-        public int CategoryId { get; set; }
-        public Category Category { get; set; }
-
-        public string MaterialUsage { get; set; }
+        public List<Category> Categories { get; set; } = [];
+		public List<ProductCategory> ProductCategories { get; set; } = [];
+		public List<MaterialProduct> MaterialProducts { get; } = [];
+		public List<Material> Materials { get; } = [];
         public string ProductionTime { get; set; }
         public string Complexity { get; set; }
         public string Sustainability { get; set; }
@@ -37,5 +36,8 @@ namespace MakersMarktE5.Data
 
         public ICollection<Sale> Sales { get; set; }
         public ICollection<Review> Reviews { get; set; }
-    }
+
+		public int? CreatorId { get; set; }
+		public User? Creator { get; set; }
+	}
 }

@@ -10,11 +10,12 @@ namespace MakersMarktE5.Data
     public class Category
     {
         [Key]
-        public int CategoryId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
 
-        public ICollection<Product> Products { get; set; }
-    }
+		public List<Product> Products { get; set; } = [];
+		public List<ProductCategory> ProductCategories { get; set; } = [];
+	}
 }

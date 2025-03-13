@@ -10,7 +10,7 @@ namespace MakersMarktE5.Data
     public class Role
     {
         [Key]
-        public int RoleId { get; set; }
+        public int Id { get; set; }
 
         [Required]
         public string Name { get; set; }
