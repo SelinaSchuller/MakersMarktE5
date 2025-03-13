@@ -16,6 +16,8 @@
 	<ItemGroup>
 		<None Remove="Views\BuyerViews\BuyerWindow.xaml" />
 		<None Remove="Views\BuyerViews\ProductPage.xaml" />
+		<None Remove="Views\ModeratorViews\ModeratorWindow.xaml" />
+		<None Remove="Views\ModeratorViews\ProductEditPage.xaml" />
 	</ItemGroup>
 
 	<ItemGroup>
@@ -50,6 +52,16 @@
 		<PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="8.0.2" />
 		<PackageReference Include="System.Configuration.ConfigurationManager" Version="8.0.1" />
 		<PackageReference Include="System.Text.Json" Version="8.0.5" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\ModeratorViews\ProductEditPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
+	</ItemGroup>
+	<ItemGroup>
+	  <Page Update="Views\ModeratorViews\ModeratorWindow.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </Page>
 	</ItemGroup>
 	<ItemGroup>
 		<Page Update="Views\BuyerViews\ProductPage.xaml">

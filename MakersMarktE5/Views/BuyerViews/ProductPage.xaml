@@ -12,18 +12,27 @@
         <GridView x:Name="ProductListView" SelectionMode="None">
             <GridView.ItemTemplate>
                 <DataTemplate>
-                    <Border Background="White" Padding="10" CornerRadius="10" Margin="10" Width="250" Height="350">
+                    <Border Background="White" Padding="10" CornerRadius="10" Margin="10" Width="250" Height="Auto">
                         <StackPanel>
                             <Image Source="/Assets/giraff.jpg" Width="220" Height="200" Stretch="UniformToFill" Margin="0,0,0,10"/>
                             <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
                             <TextBlock Text="{Binding Description}" Foreground="#5e341a" FontSize="14" TextWrapping="Wrap" TextAlignment="Center"/>
                             <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
-                                <TextBlock FontWeight="Bold" Text="Material: " Foreground="#5e341a" FontSize="12"/>
-                                <TextBlock Text="{Binding MaterialUsage}" Foreground="#5e341a" FontSize="12" TextWrapping="Wrap"/>
-                            </StackPanel>
-                            <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
                                 <TextBlock FontWeight="Bold" Text="Production: " Foreground="#5e341a" FontSize="12"/>
                                 <TextBlock Text="{Binding ProductionTime}" Foreground="#5e341a" FontSize="12" TextWrapping="Wrap"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,5,5,0">
+                                <TextBlock FontWeight="Bold" Text="Materials:" Foreground="#5e341a" FontSize="12" TextAlignment="Center"/>
+                                <ItemsControl ItemsSource="{Binding Materials}">
+                                    <ItemsControl.ItemTemplate>
+                                        <DataTemplate>
+                                            <StackPanel Spacing="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                <TextBlock FontWeight="Bold" Text="- " Foreground="#5e341a" FontSize="12"/>
+                                                <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="12" TextWrapping="Wrap"/>
+                                            </StackPanel>
+                                        </DataTemplate>
+                                    </ItemsControl.ItemTemplate>
+                                </ItemsControl>
                             </StackPanel>
                         </StackPanel>
                     </Border>
