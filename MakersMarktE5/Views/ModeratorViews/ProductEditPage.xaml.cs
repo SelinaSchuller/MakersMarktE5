@@ -3,6 +3,7 @@ using System.Linq;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.EntityFrameworkCore;
 using MakersMarktE5.Data;
+using Microsoft.UI.Xaml;
 
 namespace MakersMarktE5.Views.ModeratorViews
 {
@@ -95,6 +96,52 @@ namespace MakersMarktE5.Views.ModeratorViews
 
 			LoadData();
 		}
+
+		private void DeleteProduct_Click(object sender, RoutedEventArgs e)
+		{
+			// Get the product associated with the button
+			var button = sender as Button;
+			if(button == null)
+				return;
+
+			var product = (button.DataContext as Product);
+			if(product == null)
+				return;
+
+			// Confirm before deleting
+			ContentDialog deleteDialog = new ContentDialog
+			{
+				Title = "Delete Product",
+				Content = "Are you sure you want to delete this product?",
+				PrimaryButtonText = "Delete",
+				CloseButtonText = "Cancel",
+				XamlRoot = this.XamlRoot
+			};
+
+			var result = deleteDialog.ShowAsync();
+
+			result.Completed = (info, status) =>
+			{
+				if(result.GetResults() == ContentDialogResult.Primary)
+				{
+					// Remove from database
+					using(var db = new AppDbContext())
+					{
+						var productToDelete = db.Products.FirstOrDefault(p => p.Id == product.Id);
+						if(productToDelete != null)
+						{
+							db.Products.Remove(productToDelete);
+							db.SaveChanges();
+						}
+					}
+
+					// Remove from ObservableCollection (UI)
+					Products.Remove(product);
+					LoadData();
+				}
+			};
+		}
+
 
 		public void Productfilter(string searchTerm = "")
 		{

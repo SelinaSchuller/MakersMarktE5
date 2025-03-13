@@ -18,28 +18,90 @@
             <GridView.ItemTemplate>
                 <DataTemplate>
                     <Border Background="White" Padding="10" CornerRadius="10" Margin="10" Width="250" Height="Auto">
-                        <StackPanel>
-                            <Image Source="/Assets/giraff.jpg" Width="220" Height="200" Stretch="UniformToFill" Margin="0,0,0,10"/>
-                            <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
-                            <TextBlock Text="{Binding Description}" Foreground="#5e341a" FontSize="14" TextWrapping="Wrap" TextAlignment="Center"/>
-                            <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
-                                <TextBlock FontWeight="Bold" Text="Production: " Foreground="#5e341a" FontSize="12"/>
-                                <TextBlock Text="{Binding ProductionTime}" Foreground="#5e341a" FontSize="12" TextWrapping="WrapWholeWords"/>
+                        <Grid>
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="Auto"/>
+                            </Grid.RowDefinitions>
+
+                            <StackPanel Grid.Row="0">
+                                <Image Source="/Assets/giraff.jpg" Width="220" Height="200" Stretch="UniformToFill" Margin="0,0,0,10"/>
+                                <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="18" FontWeight="Bold" TextAlignment="Center"/>
+                                <TextBlock Text="{Binding Description}" Foreground="#5e341a" FontSize="14" TextWrapping="Wrap" TextAlignment="Center"/>
+
+                                <StackPanel Orientation="Horizontal" Spacing="5" HorizontalAlignment="Center">
+                                    <TextBlock FontWeight="Bold" Text="Production: " Foreground="#5e341a" FontSize="12"/>
+                                    <TextBlock Text="{Binding ProductionTime}" Foreground="#5e341a" FontSize="12" TextWrapping="WrapWholeWords"/>
+                                </StackPanel>
+
+                                <StackPanel Margin="5,5,5,0">
+                                    <TextBlock FontWeight="Bold" Text="Materials:" Foreground="#5e341a" FontSize="12" TextAlignment="Center"/>
+                                    <ItemsControl ItemsSource="{Binding Materials}">
+                                        <ItemsControl.ItemTemplate>
+                                            <DataTemplate>
+                                                <StackPanel Spacing="2" Orientation="Horizontal" HorizontalAlignment="Center">
+                                                    <TextBlock FontWeight="Bold" Text="- " Foreground="#5e341a" FontSize="12"/>
+                                                    <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="12" TextWrapping="WrapWholeWords"/>
+                                                </StackPanel>
+                                            </DataTemplate>
+                                        </ItemsControl.ItemTemplate>
+                                    </ItemsControl>
+                                </StackPanel>
                             </StackPanel>
-                            <StackPanel Margin="5,5,5,0">
-                                <TextBlock FontWeight="Bold" Text="Materials:" Foreground="#5e341a" FontSize="12" TextAlignment="Center"/>
-                                <ItemsControl ItemsSource="{Binding Materials}">
-                                    <ItemsControl.ItemTemplate>
-                                        <DataTemplate>
-                                            <StackPanel Spacing="2" Orientation="Horizontal" HorizontalAlignment="Center">
-                                                <TextBlock FontWeight="Bold" Text="- " Foreground="#5e341a" FontSize="12"/>
-                                                <TextBlock Text="{Binding Name}" Foreground="#5e341a" FontSize="12" TextWrapping="WrapWholeWords"/>
-                                            </StackPanel>
-                                        </DataTemplate>
-                                    </ItemsControl.ItemTemplate>
-                                </ItemsControl>
-                            </StackPanel>
-                        </StackPanel>
+
+                            <Button Content="Delete" Click="DeleteProduct_Click"
+                                    Background="Red" Foreground="White" Padding="5"
+                                    HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                    Margin="5" Grid.Row="1">
+                                <Button.Style>
+                                    <Style TargetType="Button">
+                                        <Setter Property="Background" Value="Red"/>
+                                        <Setter Property="Foreground" Value="White"/>
+                                        <Setter Property="Padding" Value="5"/>
+                                        <Setter Property="BorderThickness" Value="0"/>
+                                        <Setter Property="CornerRadius" Value="5"/>
+
+                                        <Setter Property="Template">
+                                            <Setter.Value>
+                                                <ControlTemplate TargetType="Button">
+                                                    <Grid>
+                                                        <VisualStateManager.VisualStateGroups>
+                                                            <VisualStateGroup x:Name="CommonStates">
+                                                                <VisualState x:Name="Normal"/>
+
+                                                                <VisualState x:Name="PointerOver">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Target="ButtonBackground.Background" Value="DarkRed"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+
+                                                                <VisualState x:Name="Pressed">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Target="ButtonBackground.Background" Value="Black"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+
+                                                                <VisualState x:Name="Disabled">
+                                                                    <VisualState.Setters>
+                                                                        <Setter Target="ButtonBackground.Background" Value="Gray"/>
+                                                                    </VisualState.Setters>
+                                                                </VisualState>
+                                                            </VisualStateGroup>
+                                                        </VisualStateManager.VisualStateGroups>
+
+                                                        <Border x:Name="ButtonBackground" Background="{TemplateBinding Background}" 
+                                                                CornerRadius="{TemplateBinding CornerRadius}" Padding="{TemplateBinding Padding}">
+                                                            <ContentPresenter HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                                        </Border>
+                                                    </Grid>
+                                                </ControlTemplate>
+                                            </Setter.Value>
+                                        </Setter>
+                                    </Style>
+                                </Button.Style>
+                            </Button>
+
+                        </Grid>
                     </Border>
                 </DataTemplate>
             </GridView.ItemTemplate>
