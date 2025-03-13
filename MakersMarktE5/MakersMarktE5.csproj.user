@@ -5,6 +5,12 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Views\ModeratorViews\ProductEditPage.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Views\ModeratorViews\ModeratorWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="LoginWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
