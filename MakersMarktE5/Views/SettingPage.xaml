@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Page
+    x:Class="MakersMarktE5.Views.SettingPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MakersMarktE5.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="#ece9dd">
+
+    <Grid Margin="10">
+        <StackPanel BorderBrush="#fff" BorderThickness="1" CornerRadius="50" Background="#fff" Height="150" VerticalAlignment="Top">
+            <StackPanel Orientation="Vertical" Spacing="10">
+                <StackPanel Orientation="Horizontal" Margin="20 30 20 0" Spacing="10">
+                    <TextBlock FontSize="24" Foreground="#5e341a" Text="Username: "/>
+                    <TextBlock FontSize="24" Foreground="#5e341a" x:Name="UsernameTextBlock" Text=""/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" Margin="10 20 20 0" Spacing="10">
+                    <Button Foreground="#5e341a" Background="#ece9dd" x:Name="UsernameChangeButton" Click="UsernameChangeButton_Click" Content="Change Username"/>
+                    <Button Foreground="#5e341a" Background="#ece9dd" x:Name="PasswordChangeButton" Click="PasswordChangeButton_Click" Content="Change Password"/>
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Page>
