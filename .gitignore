@@ -399,3 +399,4 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 /MakersMarktE5/Data/App.config
+MakersMarktE5/Data/ExampleApp.config
