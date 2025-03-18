@@ -45,5 +45,15 @@ namespace MakersMarktE5.Views.ModeratorViews
 				productEditPage.Productfilter(searchTerm);
 			}
 		}
+
+		private void ProductEditPageButton_Click(object sender, RoutedEventArgs e)
+		{
+			MainFrame.Navigate(typeof(ProductEditPage));
+		}
+
+		private void VerifyAccountProductPageButton_Click(object sender, RoutedEventArgs e)
+		{
+			MainFrame.Navigate(typeof(VerifyAccountProductPage));
+		}
 	}
 }
