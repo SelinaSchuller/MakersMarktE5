@@ -27,10 +27,9 @@ namespace MakersMarktE5.Views.BuyerViews
             using (var db = new AppDbContext())
             {
                 var categories = db.Categories.ToList();
-                categories.Insert(0, new Category { Id = 0, Name = "All Categories" }); // Add "All Categories" option
+                categories.Insert(0, new Category { Id = 0, Name = "All Categories" }); 
                 CategoryComboBox.ItemsSource = categories;
-                CategoryComboBox.DisplayMemberPath = "Name";
-                CategoryComboBox.SelectedIndex = 0; // Select "All Categories" by default
+                CategoryComboBox.SelectedIndex = 0; 
             }
         }
 

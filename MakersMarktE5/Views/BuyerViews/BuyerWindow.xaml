@@ -23,11 +23,7 @@
             <TextBox PlaceholderText="Search for name" x:Name="SearchBar"/>
             <Button Content="Search" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" Click="Search_Button_Click"/>
 
-            <ComboBox x:Name="CategoryComboBox" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" SelectionChanged="CategoryComboBox_SelectionChanged">
-                <ComboBoxItem Content="All Categories" IsSelected="True"/>
-                <ComboBoxItem Content="Woodworking"/>
-                <ComboBoxItem Content="Metalworking"/>
-                <!-- Add more ComboBoxItems here for each category -->
+            <ComboBox x:Name="CategoryComboBox" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" SelectionChanged="CategoryComboBox_SelectionChanged" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="False">
             </ComboBox>
         </StackPanel>
 
