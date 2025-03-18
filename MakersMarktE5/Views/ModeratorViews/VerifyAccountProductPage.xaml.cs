@@ -3,6 +3,8 @@ using System.Linq;
 using Microsoft.UI.Xaml.Controls;
 using Microsoft.EntityFrameworkCore;
 using MakersMarktE5.Data;
+using System.Threading.Tasks;
+using System;
 
 namespace MakersMarktE5.Views.ModeratorViews
 {
@@ -48,6 +50,76 @@ namespace MakersMarktE5.Views.ModeratorViews
 			// Bind Data to UI
 			UnverifiedUserListView.ItemsSource = UnverifiedUsers;
 			ProductListView.ItemsSource = UnverifiedProducts;
+		}
+
+		private async void VerifyUser_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+		{
+			var button = sender as Button;
+			if(button == null)
+				return;
+			var user = button.Tag as User;
+			if(user == null)
+				return;
+
+			ContentDialog verifyDialog = new ContentDialog
+			{
+				Title = "Verify User",
+				Content = $"Are you sure you want to verify {user.Name}?",
+				PrimaryButtonText = "Yes",
+				CloseButtonText = "Cancel",
+				XamlRoot = this.XamlRoot
+			};
+
+			var result = await verifyDialog.ShowAsync();
+			if(result == ContentDialogResult.Primary)
+			{
+				using(var db = new AppDbContext())
+				{
+					var dbUser = db.Users.FirstOrDefault(u => u.Id == user.Id);
+					if(dbUser != null)
+					{
+						dbUser.IsVerified = true;
+						db.SaveChanges();
+					}
+				}
+
+				LoadData(); // Refresh list
+			}
+		}
+
+		private async void VerifyProduct_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+		{
+			var button = sender as Button;
+			if(button == null)
+				return;
+			var product = button.Tag as Product;
+			if(product == null)
+				return;
+
+			ContentDialog verifyDialog = new ContentDialog
+			{
+				Title = "Verify Product",
+				Content = $"Are you sure you want to verify {product.Name}?",
+				PrimaryButtonText = "Yes",
+				CloseButtonText = "Cancel",
+				XamlRoot = this.XamlRoot
+			};
+
+			var result = await verifyDialog.ShowAsync();
+			if(result == ContentDialogResult.Primary)
+			{
+				using(var db = new AppDbContext())
+				{
+					var dbProduct = db.Products.FirstOrDefault(p => p.Id == product.Id);
+					if(dbProduct != null)
+					{
+						dbProduct.IsVerified = true;
+						db.SaveChanges();
+					}
+				}
+
+				LoadData(); // Refresh list
+			}
 		}
 	}
 }
