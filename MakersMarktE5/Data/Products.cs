@@ -5,6 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace MakersMarktE5.Data
 {
@@ -39,5 +40,8 @@ namespace MakersMarktE5.Data
 
 		public int? CreatorId { get; set; }
 		public User? Creator { get; set; }
+
+		[DefaultValue(false)]
+		public bool IsVerified { get; set; } = false;
 	}
 }
