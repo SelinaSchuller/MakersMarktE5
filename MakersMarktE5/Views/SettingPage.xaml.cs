@@ -45,65 +45,131 @@ namespace MakersMarktE5.Views
 
         private async void UsernameChangeButton_Click(object sender, RoutedEventArgs e)
         {
-            await ShowChangeUsernameDialog();
+            if (sender is Button button)
+            {
+                ContentDialog changeUsernameDialog = new ContentDialog
+                {
+                    Title = "Change Username",
+                    PrimaryButtonText = "Change",
+                    CloseButtonText = "Cancel",
+                    XamlRoot = this.XamlRoot
+                };
+
+                StackPanel panel = new StackPanel();
+
+                TextBox usernameBox = new TextBox { PlaceholderText = "Enter new username", Margin = new Thickness(0, 0, 10, 0) };
+                PasswordBox passwordBox = new PasswordBox { PlaceholderText = "Enter your password", Margin = new Thickness(0, 10, 0, 0) };
+
+                panel.Children.Add(usernameBox);
+                panel.Children.Add(passwordBox);
+
+                changeUsernameDialog.Content = panel;
+
+                var result = await changeUsernameDialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
+                {
+                    string newUsername = usernameBox.Text.Trim();
+                    string password = HashPassword(passwordBox.Password);
+
+                    if (string.IsNullOrEmpty(newUsername) || string.IsNullOrEmpty(password))
+                    {
+                        await ShowMessage("Error", "Username and password cannot be empty.");
+                        return;
+                    }
+
+                    if (User.LoggedInUser.Password != password)
+                    {
+                        await ShowMessage("Error", "Incorrect password.");
+                        return;
+                    }
+
+                    using var db = new AppDbContext();
+
+                    bool usernameExists = db.Users.Any(u => u.Name == newUsername);
+                    if (usernameExists)
+                    {
+                        await ShowMessage("Error", "Username is already taken.");
+                        return;
+                    }
+
+                    User.LoggedInUser.Name = newUsername;
+                    db.Users.Update(User.LoggedInUser);
+                    await db.SaveChangesAsync();
+
+                    UsernameTextBlock.Text = newUsername;
+
+                    await ShowMessage("Success", "Username changed successfully!");
+                }
+            }
         }
 
-        private async Task ShowChangeUsernameDialog()
+        private async void PasswordChangeButton_Click(object sender, RoutedEventArgs e)
         {
-            ContentDialog changeUsernameDialog = new ContentDialog
+            if (sender is Button button)
             {
-                Title = "Change Username",
-                PrimaryButtonText = "Change",
-                CloseButtonText = "Cancel",
-                XamlRoot = this.XamlRoot
-            };
-
-            StackPanel panel = new StackPanel();
-
-            TextBox usernameBox = new TextBox { PlaceholderText = "Enter new username", Margin = new Thickness(0, 0, 10, 0)};
-            PasswordBox passwordBox = new PasswordBox { PlaceholderText = "Enter your password", Margin = new Thickness(0, 10, 0, 0) };
-
-            panel.Children.Add(usernameBox);
-            panel.Children.Add(passwordBox);
-
-            changeUsernameDialog.Content = panel;
-
-            var result = await changeUsernameDialog.ShowAsync();
-
-            if (result == ContentDialogResult.Primary)
-            {
-                string newUsername = usernameBox.Text.Trim();
-                string password = HashPassword(passwordBox.Password);
-
-                if (string.IsNullOrEmpty(newUsername) || string.IsNullOrEmpty(password))
+                ContentDialog changePasswordDialog = new ContentDialog
                 {
-                    await ShowMessage("Error", "Username and password cannot be empty.");
-                    return;
-                }
+                    Title = "Change Password",
+                    PrimaryButtonText = "Change",
+                    CloseButtonText = "Cancel",
+                    XamlRoot = this.XamlRoot
+                };
 
-                if (User.LoggedInUser.Password != password)
+                StackPanel panel = new StackPanel();
+
+                PasswordBox oldPasswordBox = new PasswordBox { PlaceholderText = "Enter old password", Margin = new Thickness(0, 0, 10, 0) };
+                PasswordBox newPasswordBox = new PasswordBox { PlaceholderText = "Enter new password", Margin = new Thickness(0, 10, 10, 0) };
+                PasswordBox confirmPasswordBox = new PasswordBox { PlaceholderText = "Confirm new password", Margin = new Thickness(0, 10, 0, 0) };
+
+                panel.Children.Add(oldPasswordBox);
+                panel.Children.Add(newPasswordBox);
+                panel.Children.Add(confirmPasswordBox);
+
+                changePasswordDialog.Content = panel;
+
+                var result = await changePasswordDialog.ShowAsync();
+
+                if (result == ContentDialogResult.Primary)
                 {
-                    await ShowMessage("Error", "Incorrect password.");
-                    return;
+                    string oldPassword = HashPassword(oldPasswordBox.Password);
+                    string newPassword = HashPassword(newPasswordBox.Password);
+                    string confirmPassword = HashPassword(confirmPasswordBox.Password);
+
+                    if (string.IsNullOrEmpty(oldPassword) || string.IsNullOrEmpty(newPassword) || string.IsNullOrEmpty(confirmPassword))
+                    {
+                        await ShowMessage("Error", "All fields must be filled.");
+                        return;
+                    }
+
+                    if (User.LoggedInUser.Password != oldPassword)
+                    {
+                        await ShowMessage("Error", "Incorrect old password.");
+                        return;
+                    }
+
+                    if (oldPassword == newPassword)
+                    {
+                        await ShowMessage("Error", "New password cannot be the same as the old password.");
+                        return;
+                    }
+
+                    if (newPassword != confirmPassword)
+                    {
+                        await ShowMessage("Error", "New passwords do not match.");
+                        return;
+                    }
+
+                    // Update password
+                    using var db = new AppDbContext();
+                    User.LoggedInUser.Password = newPassword;
+                    db.Users.Update(User.LoggedInUser);
+                    await db.SaveChangesAsync();
+
+                    await ShowMessage("Success", "Password changed successfully!");
                 }
-
-                using var db = new AppDbContext();
-
-                bool usernameExists = db.Users.Any(u => u.Name == newUsername);
-                if (usernameExists)
-                {
-                    await ShowMessage("Error", "Username is already taken.");
-                    return;
-                }
-
-                User.LoggedInUser.Name = newUsername;
-                db.Users.Update(User.LoggedInUser);
-                await db.SaveChangesAsync();
-
-                UsernameTextBlock.Text = newUsername;
-
-                await ShowMessage("Success", "Username changed successfully!");
             }
+
         }
 
         private async Task ShowMessage(string title, string message)
@@ -118,12 +184,5 @@ namespace MakersMarktE5.Views
 
             await messageDialog.ShowAsync();
         }
-
-        private void PasswordChangeButton_Click(object sender, RoutedEventArgs e)
-        {
-
-
-        }
     }
-   
 }
