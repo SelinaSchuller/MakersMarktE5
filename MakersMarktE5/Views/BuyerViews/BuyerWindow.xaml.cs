@@ -44,6 +44,10 @@ namespace MakersMarktE5.Views.BuyerViews
                 productPage.Productfilter(searchTerm);
             }
         }
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(ProductPage));
+        }
 
         private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -53,5 +57,11 @@ namespace MakersMarktE5.Views.BuyerViews
                 productPage.Categoryfilter(selectedCategory);
             }
         }
+        
+        private void settingButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(SettingPage));
+        }
+
     }
 }
