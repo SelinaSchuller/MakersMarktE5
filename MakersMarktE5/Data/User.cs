@@ -6,6 +6,7 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.ComponentModel;
 
 namespace MakersMarktE5.Data
 {
@@ -28,7 +29,10 @@ namespace MakersMarktE5.Data
 
         public ICollection<Sale> Sales { get; set; }
         public ICollection<Review> Reviews { get; set; }
-    }
+
+		[DefaultValue(false)]
+		public bool IsVerified { get; set; } = false;
+	}
 }
 
 
