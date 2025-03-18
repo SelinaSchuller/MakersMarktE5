@@ -149,6 +149,10 @@ namespace MakersMarktE5.Views.ModeratorViews
 			{
 				var products = db.Products
 								 .Where(p => p.Name.Contains(searchTerm))
+								 .Include(p => p.ProductCategories)
+								 .ThenInclude(pc => pc.Category)
+								 .Include(p => p.MaterialProducts)
+								 .ThenInclude(mp => mp.Material)
 								 .ToList();
 				ProductListView.ItemsSource = products;
 			}
