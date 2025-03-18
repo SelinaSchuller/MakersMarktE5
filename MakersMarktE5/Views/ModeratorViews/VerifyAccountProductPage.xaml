@@ -20,7 +20,7 @@
             <ColumnDefinition Width="2*" />
         </Grid.ColumnDefinitions>
 
-        <!-- Left Side: Unverified Accounts -->
+        <!-- Left Side: Accounts -->
         <GridView x:Name="UnverifiedUserListView" Grid.Column="0" SelectionMode="Single">
             <GridView.ItemTemplate>
                 <DataTemplate>
@@ -41,7 +41,7 @@
         <!-- Middle: Separator -->
         <Rectangle Grid.Column="1" Width="2" Fill="Gray" HorizontalAlignment="Center" />
 
-        <!-- Right Side: Unverified Products -->
+        <!-- Right Side: Products -->
         <GridView x:Name="ProductListView" SelectionMode="None" Grid.Column="2">
             <GridView.ItemTemplate>
                 <DataTemplate>

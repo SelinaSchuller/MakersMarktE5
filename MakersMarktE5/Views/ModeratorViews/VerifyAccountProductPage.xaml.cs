@@ -23,7 +23,6 @@ namespace MakersMarktE5.Views.ModeratorViews
 		{
 			using(var db = new AppDbContext())
 			{
-				// Fetch Unverified Users
 				var userList = db.Users.Include(u => u.Role).Where(u => !u.IsVerified).ToList();
 				UnverifiedUsers.Clear();
 				foreach(var user in userList)
@@ -31,7 +30,6 @@ namespace MakersMarktE5.Views.ModeratorViews
 					UnverifiedUsers.Add(user);
 				}
 
-				// Fetch Unverified Products with Includes
 				var productList = db.Products
 									.Include(p => p.Type)
 									.Include(p => p.Materials)
@@ -47,7 +45,6 @@ namespace MakersMarktE5.Views.ModeratorViews
 				}
 			}
 
-			// Bind Data to UI
 			UnverifiedUserListView.ItemsSource = UnverifiedUsers;
 			ProductListView.ItemsSource = UnverifiedProducts;
 		}
@@ -83,7 +80,7 @@ namespace MakersMarktE5.Views.ModeratorViews
 					}
 				}
 
-				LoadData(); // Refresh list
+				LoadData();
 			}
 		}
 
@@ -118,7 +115,7 @@ namespace MakersMarktE5.Views.ModeratorViews
 					}
 				}
 
-				LoadData(); // Refresh list
+				LoadData();
 			}
 		}
 	}
