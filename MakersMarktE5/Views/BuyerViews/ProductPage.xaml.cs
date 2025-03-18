@@ -32,5 +32,20 @@ namespace MakersMarktE5.Views.BuyerViews
                 ProductListView.ItemsSource = products;
             }
         }
+
+        public void Categoryfilter(string selectedCategory)
+        {
+            using (var db = new AppDbContext())
+            {
+                var products = db.Products
+                                 .Include(p => p.ProductCategories)
+                                 .ThenInclude(pc => pc.Category)
+                                 .Where(p => selectedCategory == "All Categories" || p.ProductCategories.Any(pc => pc.Category.Name == selectedCategory))
+                                 .ToList();
+
+                ProductListView.ItemsSource = products;
+            }
+        }
+
     }
 }
