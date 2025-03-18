@@ -17,9 +17,9 @@
 
         <StackPanel Grid.Column="0" Background="#5e341a" Width="250" HorizontalAlignment="Center">
             <Image Width="150" Height="Auto" Source="/Assets/Logo.png" Margin="5"/>
-            <Button Content="Home" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <Button Content="Home" x:Name="homeButton" Click="homeButton_Click" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
             <Button Content="My Orders" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
-            <Button Content="Settings" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
+            <Button Content="Settings" x:Name="settingButton" Click="settingButton_Click" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10"/>
             <TextBox PlaceholderText="Search for name" x:Name="SearchBar"/>
             <Button Content="Search" Background="Transparent" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" Click="Search_Button_Click"/>
         </StackPanel>

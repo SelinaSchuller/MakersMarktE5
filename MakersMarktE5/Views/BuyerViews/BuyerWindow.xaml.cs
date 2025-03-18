@@ -47,7 +47,15 @@ namespace MakersMarktE5.Views.BuyerViews
                 productPage.Productfilter(searchTerm);
             }
         }
+        private void homeButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(ProductPage));
+        }
 
+        private void settingButton_Click(object sender, RoutedEventArgs e)
+        {
+            MainFrame.Navigate(typeof(SettingPage));
+        }
 
     }
 }
