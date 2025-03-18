@@ -13,6 +13,7 @@ using Microsoft.UI.Xaml.Input;
 using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using MakersMarktE5.Services;
+using MakersMarktE5.Views.ModeratorViews;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -31,6 +32,12 @@ namespace MakersMarktE5.Views.CreatorViews
             this.Title = "Creator Dashboard";
             Fullscreen fullscreenService = new Fullscreen();
             fullscreenService.SetFullscreen(this);
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            var creatorWindow = new LoginWindow();
+            creatorWindow.Activate();
+            this.Close();
         }
     }
 }

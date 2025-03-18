@@ -23,6 +23,13 @@
                    Height="Auto"
                    Source="/Assets/Logo.png"
                    Margin="5" />
+            <Button Content="Logout"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Padding="10"
+                    Click="Logout_Click" />
         </StackPanel>
 
         <Grid Grid.Column="1">

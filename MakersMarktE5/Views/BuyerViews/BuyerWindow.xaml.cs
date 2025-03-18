@@ -4,6 +4,11 @@ using MakersMarktE5.Data;
 using Microsoft.EntityFrameworkCore;
 using MakersMarktE5.Services;
 using Microsoft.UI.Xaml;
+using MakersMarktE5.Views.ModeratorViews;
+using MakersMarktE5.Views.CreatorViews;
+
+// To learn more about WinUI, the WinUI project structure,
+// and more about our project templates, see: http://aka.ms/winui-project-info.
 
 namespace MakersMarktE5.Views.BuyerViews
 {
@@ -46,6 +51,12 @@ namespace MakersMarktE5.Views.BuyerViews
         private void homeButton_Click(object sender, RoutedEventArgs e)
         {
             MainFrame.Navigate(typeof(ProductPage));
+        }
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+            var creatorWindow = new LoginWindow();
+            creatorWindow.Activate();
+            this.Close();
         }
 
         private void CategoryComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

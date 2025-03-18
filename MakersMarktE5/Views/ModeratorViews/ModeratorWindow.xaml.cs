@@ -14,6 +14,7 @@ using Microsoft.UI.Xaml.Media;
 using Microsoft.UI.Xaml.Navigation;
 using MakersMarktE5.Services;
 using MakersMarktE5.Views.BuyerViews;
+using MakersMarktE5.Views.CreatorViews;
 
 // To learn more about WinUI, the WinUI project structure,
 // and more about our project templates, see: http://aka.ms/winui-project-info.
@@ -56,4 +57,11 @@ namespace MakersMarktE5.Views.ModeratorViews
 			MainFrame.Navigate(typeof(VerifyAccountProductPage));
 		}
 	}
+        private void Logout_Click(object sender, RoutedEventArgs e)
+        {
+			var closeWindow = new LoginWindow();
+			closeWindow.Activate();
+			this.Close();
+        }
+    }
 }

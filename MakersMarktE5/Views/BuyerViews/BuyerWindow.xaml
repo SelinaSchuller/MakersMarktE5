@@ -25,6 +25,13 @@
 
             <ComboBox x:Name="CategoryComboBox" Foreground="White" FontSize="18" BorderThickness="0" Padding="10" SelectionChanged="CategoryComboBox_SelectionChanged" DisplayMemberPath="Name" IsSynchronizedWithCurrentItem="False">
             </ComboBox>
+            <Button Content="Logout"
+                    Background="Transparent"
+                    Foreground="White"
+                    FontSize="18"
+                    BorderThickness="0"
+                    Padding="10"
+                    Click="Logout_Click" />
         </StackPanel>
 
         <Grid Grid.Column="1">
