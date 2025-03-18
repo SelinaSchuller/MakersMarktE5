@@ -1,6 +1,7 @@
 using MakersMarktE5.Data;
 using MakersMarktE5.Services;
 using MakersMarktE5.Views.BuyerViews;
+using MakersMarktE5.Views.CreatorViews;
 using MakersMarktE5.Views.ModeratorViews;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.UI.Xaml;
@@ -71,7 +72,14 @@ namespace MakersMarktE5
                     Data.User.LoggedInUser = user;
 
                     //verander dit naar de juiste locatie
-                    if(user.RoleId == 2)
+                    if(user.RoleId == 1)
+                    {
+                        //Role Creator:
+                        var creatorWindow = new CreatorWindow();
+                        creatorWindow.Activate();
+                        this.Close();
+                    }
+                    else if(user.RoleId == 2)
                     {
                         //Role Buyer:
 						var buyerWindow = new BuyerWindow();
