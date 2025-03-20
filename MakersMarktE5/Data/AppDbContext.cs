@@ -89,13 +89,15 @@ namespace MakersMarktE5.Data
 			// Seed Categories
 			modelBuilder.Entity<Category>().HasData(
 				new Category { Id = 1, Name = "Woodworking" },
-				new Category { Id = 2, Name = "Metalworking" }
+				new Category { Id = 2, Name = "Metalworking" },
+				new Category { Id = 3, Name = "Sewing" }
 			);
 
 			// Seed Material
 			modelBuilder.Entity<Material>().HasData(
 				new Material { Id = 1, Name = "Oak wood" },
-				new Material { Id = 2, Name = "Steel" }
+				new Material { Id = 2, Name = "Steel" },
+				new Material { Id = 3, Name = "Textile" }
 			);
 
 			// Seeding Types
@@ -112,24 +114,31 @@ namespace MakersMarktE5.Data
 
             // Seeding Products
             modelBuilder.Entity<Product>().HasData(
-                new Product { Id = 1, Name = "Wooden Table", Description = "Sturdy oak table", TypeId = 1, ProductionTime = "5 days", Complexity = "Medium", Sustainability = "High", PropertyId = 1, CreatorId = 2},
-                new Product { Id = 2, Name = "Steel Hammer", Description = "Durable hammer", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 2},
-                new Product { Id = 3, Name = "Necklace", Description = "Beautiful necklace with diamond.", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 2}
-            );
+                new Product { Id = 1, Name = "Wooden Table", Description = "Sturdy oak table", TypeId = 1, ProductionTime = "5 days", Complexity = "Medium", Sustainability = "High", PropertyId = 1, CreatorId = 1},
+                new Product { Id = 2, Name = "Steel Hammer", Description = "Durable hammer", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 1},
+                new Product { Id = 3, Name = "Necklace", Description = "Beautiful necklace with diamond.", TypeId = 2, ProductionTime = "2 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 2},
+				new Product { Id = 4, Name = "Wooden Radio", Description = "Handmade Radio", TypeId = 1, ProductionTime = "30 days", Complexity = "High", Sustainability = "High", PropertyId = 1, CreatorId = 1 },
+				new Product { Id = 5, Name = "Custom Shirt", Description = "Shirt styled in the way you want!", TypeId = 1, ProductionTime = "10 days", Complexity = "Low", Sustainability = "Medium", PropertyId = 2, CreatorId = 1 }
+
+			);
 
 			// Seed ProductCategory Relationships (Assigning Products to Categories)
 			modelBuilder.Entity<ProductCategory>().HasData(
 			   new ProductCategory { ProductId = 1, CategoryId = 1 },
 			   new ProductCategory { ProductId = 2, CategoryId = 1 },
 			   new ProductCategory { ProductId = 2, CategoryId = 2 },
-			   new ProductCategory { ProductId = 3, CategoryId = 2 }
+			   new ProductCategory { ProductId = 3, CategoryId = 2 },
+			   new ProductCategory { ProductId = 4, CategoryId = 1 },
+			   new ProductCategory { ProductId = 5, CategoryId = 3 }
 		   );
 
 			// ✅ Seeding MaterialProduct(Assigning Materials to Products)
 			modelBuilder.Entity<MaterialProduct>().HasData(
 				new MaterialProduct { ProductId = 1, MaterialId = 1 },
 				new MaterialProduct { ProductId = 1, MaterialId = 2 },
-				new MaterialProduct { ProductId = 2, MaterialId = 2 }
+				new MaterialProduct { ProductId = 2, MaterialId = 2 },
+				new MaterialProduct { ProductId = 4, MaterialId = 1 },
+				new MaterialProduct { ProductId = 5, MaterialId = 3 }
 			);
 
 			// Seeding Sales
