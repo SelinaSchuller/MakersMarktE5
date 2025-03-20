@@ -5,6 +5,9 @@
     <None Update="App.xaml">
       <SubType>Designer</SubType>
     </None>
+    <Page Update="Views\CreatorViews\EditProductDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Views\CreatorViews\MyCollectionPage.xaml">
       <SubType>Designer</SubType>
     </Page>
