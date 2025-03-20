@@ -32,8 +32,8 @@ namespace MakersMarktE5.Data
         public string Sustainability { get; set; }
 
         [ForeignKey("UniqueProperty")]
-        public int PropertyId { get; set; }
-        public UniqueProperty UniqueProperty { get; set; }
+        public int? PropertyId { get; set; }
+        public UniqueProperty? UniqueProperty { get; set; }
 
         public ICollection<Sale> Sales { get; set; }
         public ICollection<Review> Reviews { get; set; }

@@ -57,9 +57,9 @@
             </ListView>
         </StackPanel>
 
-        <StackPanel Grid.Row="7">
-            <Button Content="Save" Click="SaveButton_Click" HorizontalAlignment="Left" Margin="10"/>
-            <Button Content="Cancel" Click="CancelButton_Click" HorizontalAlignment="Right" Margin="10"/>
+        <StackPanel Grid.Row="7" Padding="10" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="20">
+            <Button FontSize="20" Content="Save" Click="SaveButton_Click" HorizontalAlignment="Left" Width="150"/>
+            <Button FontSize="20" Content="Cancel" Click="CancelButton_Click" HorizontalAlignment="Right" Width="150"/>
         </StackPanel>
     </Grid>
 </ContentDialog>

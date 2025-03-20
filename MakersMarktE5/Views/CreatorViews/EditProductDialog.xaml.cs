@@ -1,7 +1,8 @@
-using Microsoft.UI.Xaml.Controls;
+﻿using Microsoft.UI.Xaml.Controls;
 using MakersMarktE5.Data;
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
+using System;
 
 namespace MakersMarktE5.Views.Dialogs
 {
@@ -13,16 +14,14 @@ namespace MakersMarktE5.Views.Dialogs
 		public EditProductDialog(Product product)
 		{
 			this.InitializeComponent();
-			_originalProduct = product; // Store original product reference
+			_originalProduct = product;
 
-			// Populate fields
 			NameTextBox.Text = product.Name;
 			DescriptionTextBox.Text = product.Description;
 			ProductionTimeTextBox.Text = product.ProductionTime;
 			ComplexityTextBox.Text = product.Complexity;
 			SustainabilityTextBox.Text = product.Sustainability;
 
-			// Populate Type & Unique Property Dropdowns
 			TypeComboBox.ItemsSource = _db.Types.ToList();
 			TypeComboBox.DisplayMemberPath = "Name";
 			TypeComboBox.SelectedItem = _db.Types.FirstOrDefault(t => t.Id == product.TypeId);
@@ -31,7 +30,6 @@ namespace MakersMarktE5.Views.Dialogs
 			UniquePropertyComboBox.DisplayMemberPath = "Name";
 			UniquePropertyComboBox.SelectedItem = _db.UniqueProperties.FirstOrDefault(up => up.Id == product.PropertyId);
 
-			// Populate Categories List
 			var allCategories = _db.Categories.ToList();
 			CategoryListView.ItemsSource = allCategories;
 			foreach(var category in product.ProductCategories.Select(pc => pc.Category))
@@ -43,7 +41,6 @@ namespace MakersMarktE5.Views.Dialogs
 				}
 			}
 
-			// Populate Materials List
 			var allMaterials = _db.Materials.ToList();
 			MaterialListView.ItemsSource = allMaterials;
 			foreach(var material in product.MaterialProducts.Select(mp => mp.Material))
@@ -56,8 +53,27 @@ namespace MakersMarktE5.Views.Dialogs
 			}
 		}
 
-		private void SaveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
+		private async void SaveButton_Click(object sender, Microsoft.UI.Xaml.RoutedEventArgs e)
 		{
+			if(string.IsNullOrWhiteSpace(NameTextBox.Text) ||
+				string.IsNullOrWhiteSpace(DescriptionTextBox.Text) ||
+				string.IsNullOrWhiteSpace(ProductionTimeTextBox.Text) ||
+				string.IsNullOrWhiteSpace(ComplexityTextBox.Text) ||
+				string.IsNullOrWhiteSpace(SustainabilityTextBox.Text) ||
+				TypeComboBox.SelectedItem == null)
+			{
+				this.Hide();
+				ContentDialog errorDialog = new ContentDialog
+				{
+					Title = "Invalid Input",
+					Content = "All fields must be filled!",
+					CloseButtonText = "OK",
+					XamlRoot = this.XamlRoot
+				};
+				await errorDialog.ShowAsync();
+				return;
+			}
+
 			var dbProduct = _db.Products
 				.Include(p => p.ProductCategories)
 				.Include(p => p.MaterialProducts)
@@ -66,20 +82,18 @@ namespace MakersMarktE5.Views.Dialogs
 			if(dbProduct == null)
 				return;
 
-			// Update product properties
 			dbProduct.Name = NameTextBox.Text.Trim();
 			dbProduct.Description = DescriptionTextBox.Text.Trim();
 			dbProduct.ProductionTime = ProductionTimeTextBox.Text.Trim();
 			dbProduct.Complexity = ComplexityTextBox.Text.Trim();
 			dbProduct.Sustainability = SustainabilityTextBox.Text.Trim();
-
-			if(TypeComboBox.SelectedItem != null)
-				dbProduct.TypeId = ((Type)TypeComboBox.SelectedItem).Id;
+			dbProduct.TypeId = ((Data.Type)TypeComboBox.SelectedItem).Id;
 
 			if(UniquePropertyComboBox.SelectedItem != null)
 				dbProduct.PropertyId = ((UniqueProperty)UniquePropertyComboBox.SelectedItem).Id;
+			else
+				dbProduct.PropertyId = null;
 
-			// Update Categories
 			dbProduct.ProductCategories.Clear();
 			foreach(var selectedCategory in CategoryListView.SelectedItems.Cast<Category>())
 			{
@@ -90,7 +104,6 @@ namespace MakersMarktE5.Views.Dialogs
 				});
 			}
 
-			// Update Materials
 			dbProduct.MaterialProducts.Clear();
 			foreach(var selectedMaterial in MaterialListView.SelectedItems.Cast<Material>())
 			{
