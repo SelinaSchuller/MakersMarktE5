@@ -8,11 +8,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid>
-        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="300" Spacing="20">
-            <TextBox x:Name="usernameTextBox" Header="Username" Width="auto"/>
-            <PasswordBox x:Name="passwordTextBox" Header="Password" Width="auto"/>
-            <TextBlock x:Name="ErrorTextBlock" Foreground="Red"/>
+    <Grid Background="#e4e0cf">
+        <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center" Width="350" Spacing="20" Background="#5e341a" Padding="20" BorderBrush="Transparent" CornerRadius="5">
+            <TextBox FontSize="18" x:Name="usernameTextBox" Header="Username" Width="auto"/>
+            <PasswordBox FontSize="18" x:Name="passwordTextBox" Header="Password" Width="auto"/>
+            <TextBlock FontSize="18" x:Name="ErrorTextBlock" Foreground="Red"/>
             <StackPanel Orientation="Horizontal" Spacing="50" HorizontalAlignment="Center">
                 <Button x:Name="LoginButton" Click="LoginButton_Click" Content="Login" Width="125"/>
                 <Button x:Name="RegisterButton" Click="RegisterButton_Click" Content="Register" Width="125"/>
