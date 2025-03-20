@@ -16,6 +16,8 @@ namespace MakersMarktE5.Data
         public DbSet<Product> Products { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Material> Materials { get; set; }
+        public DbSet<UniqueProperty> UniqueProperties { get; set; }
+        public DbSet<Type> Types { get; set; }
 
 		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
