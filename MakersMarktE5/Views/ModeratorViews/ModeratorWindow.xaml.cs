@@ -56,7 +56,7 @@ namespace MakersMarktE5.Views.ModeratorViews
 		{
 			MainFrame.Navigate(typeof(VerifyAccountProductPage));
 		}
-	}
+	
         private void Logout_Click(object sender, RoutedEventArgs e)
         {
 			var closeWindow = new LoginWindow();
