@@ -28,6 +28,8 @@ namespace MakersMarktE5.Views.BuyerViews
             {
                 var products = db.Products
                                  .Where(p => p.Name.Contains(searchTerm) || p.Description.Contains(searchTerm))
+                                 .Include(p => p.Categories)
+                                 .Include(p => p.Materials)
                                  .ToList();
                 ProductListView.ItemsSource = products;
             }
@@ -40,6 +42,7 @@ namespace MakersMarktE5.Views.BuyerViews
                 var products = db.Products
                                  .Include(p => p.ProductCategories)
                                  .ThenInclude(pc => pc.Category)
+                                 .Include(p => p.Materials)
                                  .Where(p => selectedCategory == "All Categories" || p.ProductCategories.Any(pc => pc.Category.Name == selectedCategory))
                                  .ToList();
 
